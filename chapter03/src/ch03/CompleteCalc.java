@@ -26,6 +26,8 @@ public class CompleteCalc extends Calculator {
 	
 		Calc calc=new CompleteCalc();
 		
+		calc.devide(1, 0);
+		
 		if(calc instanceof CompleteCalc) {
 			((CompleteCalc) calc).showInfo();
 		}

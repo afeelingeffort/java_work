@@ -23,7 +23,7 @@ public abstract class Car {
 	// 실행의 흐름을 만들어 둔다.
 	// final : 재정의할 수 없게 설계한다.
 	// 하위 클래스에서 재정의할 수 없게 설계한다.
-	public void run() {
+	public final void run() {
 		startCar();
 		drive();
 		wiper();

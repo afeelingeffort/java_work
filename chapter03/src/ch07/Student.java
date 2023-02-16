@@ -36,6 +36,7 @@ public class Student {
 		return false;
 	}
 
+
 	public static void main(String[] args) {
 		Student st1 = new Student(1, "짱구");
 		Student st2 = new Student(2, "찡구");
