@@ -189,9 +189,16 @@ public class Player extends JLabel implements Moveable {
 					y += JUMPSPEED;
 					setLocation(x, y);
 					down = false;
-				} //end of while
-				// 상태값을 다룰 때는 상황이 변하면 초기화 처리를 잘하자 !!
-				// 이벤트 루프, 이벤트 큐라는 게 있어서 대각선으로 이동이 가능
+
+					try {
+						Thread.sleep(3);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				} // end of while
+					// 상태값을 다룰 때는 상황이 변하면 초기화 처리를 잘하자 !!
+					// 이벤트 루프, 이벤트 큐라는 게 있어서 대각선으로 이동이 가능
+
 			}
 		}).start();
 	}

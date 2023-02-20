@@ -29,16 +29,16 @@ public class BackgroundPlayerService implements Runnable {
 			// 색상 확인
 			// 왼쪽으로 갈 때는 좌표 지점을 보정해야 하고
 			// 오른쪽으로 갈 때는 역시나 기준 좌표 지점을 보정해야 한다.
-			Color leftColor = new Color(image.getRGB(player.getX() + 10, player.getY() + 55));
-			Color rightColor = new Color(image.getRGB(player.getX() + 45, player.getY() + 55));
+			Color leftColor = new Color(image.getRGB(player.getX() + 10, player.getY() + 25));
+			Color rightColor = new Color(image.getRGB(player.getX() + 60, player.getY() + 25));
 
 			// 바닥 충돌 감지
 			// Color bottomColorLeft = new Color(image.getRGB(player.getX()+10,
 			// player.getY()+60));
 			// -65536, -16556961, -1
-			int bottomColorLeft = image.getRGB(player.getX() + 10, player.getY() + 60);
+			int bottomColorLeft = image.getRGB(player.getX() + 10, player.getY() + 55);
 			// -65536, -16556961, -1
-			int bottomColorRight = image.getRGB(player.getX() + 40, player.getY() + 60);
+			int bottomColorRight = image.getRGB(player.getX() + 45, player.getY() + 55);
 			// 하얀색이 아니면 바닥이다.
 			if (bottomColorLeft + bottomColorRight != -2) {
 				System.out.println("여기는 바닥입니다.");
@@ -72,7 +72,7 @@ public class BackgroundPlayerService implements Runnable {
 			}
 
 			try {
-				Thread.sleep(2);
+				Thread.sleep(3);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
