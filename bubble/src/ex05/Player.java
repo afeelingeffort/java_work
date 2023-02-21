@@ -1,4 +1,4 @@
-package ex02;
+package ex05;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -15,6 +15,10 @@ public class Player extends JLabel implements Moveable {
 	private boolean up;
 	private boolean down;
 
+	// 벽에 충돌한 상태
+	private boolean leftWallCrash;
+	private boolean rightWallCrash;
+
 	// 플레이어의 속도 상태
 	private final int SPEED = 4;
 	private final int JUMPSPEED = 2;
@@ -25,13 +29,54 @@ public class Player extends JLabel implements Moveable {
 		initData();
 		setInitLayout();
 	}
+	// getter 메서드 추가 left, right, isLeftWallCrash, isRightWallCrash 추가
+
+	public void setRight(boolean right) {
+		this.right = right;
+	}
+
+	public boolean isUp() {
+		return up;
+	}
+
+	public void setUp(boolean up) {
+		this.up = up;
+	}
+
+	public boolean isDown() {
+		return down;
+	}
+
+	public void setDown(boolean down) {
+		this.down = down;
+	}
 
 	public void setLeft(boolean left) {
 		this.left = left;
 	}
 
-	public void setRight(boolean right) {
-		this.right = right;
+	public boolean isLeft() {
+		return left;
+	}
+
+	public boolean isRight() {
+		return right;
+	}
+
+	public boolean isLeftWallCrash() {
+		return leftWallCrash;
+	}
+
+	public boolean isRightWallCrash() {
+		return rightWallCrash;
+	}
+
+	public void setLeftWallCrash(boolean leftWallCrash) {
+		this.leftWallCrash = leftWallCrash;
+	}
+
+	public void setRightWallCrash(boolean rightWallCrash) {
+		this.rightWallCrash = rightWallCrash;
 	}
 
 	private void initData() {
@@ -42,10 +87,13 @@ public class Player extends JLabel implements Moveable {
 		right = false;
 		up = false;
 		down = false;
+
+		leftWallCrash = false;
+		rightWallCrash = false;
 	}
 
 	private void setInitLayout() {
-		x = 55;
+		x = 500;
 		y = 535;
 		// 좌표 기반, 라벨의 크기를 지정해야 한다.
 		setSize(50, 50);
@@ -136,20 +184,21 @@ public class Player extends JLabel implements Moveable {
 
 			@Override
 			public void run() {
-				for (int i = 0; i < 130 / JUMPSPEED; i++) {
+
+				while (down) {
 					y += JUMPSPEED;
 					setLocation(x, y);
+					down = false;
 
 					try {
 						Thread.sleep(3);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+				} // end of while
+					// 상태값을 다룰 때는 상황이 변하면 초기화 처리를 잘하자 !!
+					// 이벤트 루프, 이벤트 큐라는 게 있어서 대각선으로 이동이 가능
 
-				}
-				down = false;
-				// 상태값을 다룰 때는 상황이 변하면 초기화 처리를 잘하자 !!
-				// 이벤트 루프, 이벤트 큐라는 게 있어서 대각선으로 이동이 가능
 			}
 		}).start();
 	}

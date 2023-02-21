@@ -22,6 +22,14 @@ public class Player extends JLabel implements Moveable {
 		setInitLayout();
 	}
 
+	public void setLeft(boolean left) {
+		this.left = left;
+	}
+
+	public void setRight(boolean right) {
+		this.right = right;
+	}
+
 	private void initData() {
 		playerR = new ImageIcon("images/playerR.png");
 		playerL = new ImageIcon("images/playerL.png");
@@ -78,7 +86,7 @@ public class Player extends JLabel implements Moveable {
 					setIcon(playerR);
 					x += SPEED;
 					setLocation(x, y);
-					
+
 					try {
 						Thread.sleep(10);
 					} catch (InterruptedException e) {
@@ -93,19 +101,50 @@ public class Player extends JLabel implements Moveable {
 	@Override
 	public void up() {
 		up = true;
-		
+
 		new Thread(new Runnable() {
-			
+
 			@Override
 			public void run() {
-				
+				for (int i = 0; i < 130 / JUMPSPEED; i++) {
+					y -= JUMPSPEED;
+					setLocation(x, y);
+
+					try {
+						Thread.sleep(5);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+
+				up = false;
+				down();
 			}
 		}).start();
 	}
 
 	@Override
 	public void down() {
-		System.out.println("player down");
+		down = true;
+
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				for (int i = 0; i < 130 / JUMPSPEED; i++) {
+					y += JUMPSPEED;
+					setLocation(x, y);
+
+					try {
+						Thread.sleep(3);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				down = false;
+			}
+		}).start();
 	}
 
 }

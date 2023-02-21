@@ -9,6 +9,14 @@ public class Player extends JLabel implements Moveable {
 	private int y;
 	private ImageIcon playerR, playerL;
 
+	private boolean left;
+	private boolean right;
+	private boolean up;
+	private boolean down;
+
+	private final int SPEED = 4;
+	private final int JUMPSPEED = 2;
+
 	public Player() {
 		initData();
 		setInitLayout();
@@ -17,6 +25,11 @@ public class Player extends JLabel implements Moveable {
 	private void initData() {
 		playerR = new ImageIcon("images/playerR.png");
 		playerL = new ImageIcon("images/playerL.png");
+
+		left = false;
+		right = false;
+		up = false;
+		down = false;
 	}
 
 	private void setInitLayout() {
@@ -31,22 +44,58 @@ public class Player extends JLabel implements Moveable {
 
 	@Override
 	public void left() {
-		setIcon(playerL);
-		x -= 10;
-		setLocation(x, y);
+		left = true;
+
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				setIcon(playerL);
+				x -= SPEED;
+				setLocation(x, y);
+
+				try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+
 	}
 
 	@Override
 	public void right() {
-		setIcon(playerR);
-		x += 10;
-		setLocation(x, y);
+		right = true;
+
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				setIcon(playerR);
+				x += SPEED;
+				setLocation(x, y);
+				try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+
 	}
 
 	@Override
 	public void up() {
-		System.out.println("점프");
-		
+		up = true;
+
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+
+			}
+		}).start();
 	}
 
 	@Override
