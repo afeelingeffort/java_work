@@ -35,7 +35,9 @@ public class MainTest {
 		// 문제 해결방안 - 요청사항 : 학생으로 접근
 		// ArrayList<Enrollment> a;
 		// a.course;
-		System.out.println(student2.getEnrollments().get(0).getCourse().getName());
+		
+		//toString() 메서드를 만들면 쉽게 출력 가능
+		System.out.println(student2.getEnrollments().get(0).getCourse());
 
 		System.out.println("--------------------");
 		// Alice가 신청한 과정에 이름을 화면에 출력하시오

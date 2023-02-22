@@ -11,6 +11,11 @@ public class Course {
 		this.description = description;
 	}
 
+	@Override
+	public String toString() {
+		return "Course [courseId=" + courseId + ", name=" + name + ", description=" + description + "]";
+	}
+
 	public int getCourseId() {
 		return courseId;
 	}

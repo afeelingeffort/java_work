@@ -14,7 +14,6 @@ public class ArrayListMain {
 
 		ArrayList<Integer> list = new ArrayList<>(); // 자료구조 - 정수를 담을 수 있는 메모리 공간 선언
 		ArrayList<Student> members = new ArrayList<>();
-		ArrayList<String> strings = new ArrayList<>();
 
 		// 값 추가 방법
 		list.add(3); // 인덱스 0번 - 3

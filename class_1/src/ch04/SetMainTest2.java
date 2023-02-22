@@ -26,6 +26,7 @@ public class SetMainTest2 {
 			cnt++;
 			numberSet.add(getRandomNumber());
 		}
+		
 		System.out.println(numberSet);
 		System.out.println("반복 횟수 : " + cnt);
 
