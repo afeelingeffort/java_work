@@ -101,19 +101,24 @@ public class Player extends JLabel implements Moveable {
 		right = false;
 		up = false;
 		down = false;
+		
 		leftWallCrash = false;
 		rightWallCrash = false;
+		
 		pWay = PlayerWay.RIGHT;
+		
 	}
 
 	private void setInitLayout() {
-		x = 500;
+		x = 450;
 		y = 535;
 		// 좌표기반, 라벨에 크기를 지정해야 한다.
 		setSize(50, 50);
 		setLocation(x, y);
 		// JLabel 에 아이콘을 셋팅하는 메서드
 		setIcon(playerR);
+		
+		setVisible(true);
 	}
 
 	@Override
@@ -143,6 +148,7 @@ public class Player extends JLabel implements Moveable {
 	public void right() {
 		pWay = PlayerWay.RIGHT;
 		right = true;
+		
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -150,6 +156,7 @@ public class Player extends JLabel implements Moveable {
 					setIcon(playerR);
 					x = x + SPEED;
 					setLocation(x, y);
+					
 					try {
 						Thread.sleep(10);
 					} catch (InterruptedException e) {
@@ -171,7 +178,7 @@ public class Player extends JLabel implements Moveable {
 					y = y - JUMPSPEED;
 					setLocation(x, y);
 					try {
-						Thread.sleep(5);
+						Thread.sleep(3);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -186,6 +193,7 @@ public class Player extends JLabel implements Moveable {
 	@Override
 	public void down() {
 		down = true;
+		
 		new Thread(new Runnable() {
 			@Override
 			public void run() {

@@ -28,6 +28,7 @@ public class Bubble extends JLabel implements Moveable {
 	// 버블을 Player에 의존하고 있다.
 	public Bubble(BubbleFrame mContext) {
 		this.mContext = mContext;
+		
 		initData();
 		setInitLayout();
 		backgroundBubbleService = new BackgroundBubbleService(this);
@@ -38,6 +39,7 @@ public class Bubble extends JLabel implements Moveable {
 		bubble = new ImageIcon("images/bubble.png");
 		bubbled = new ImageIcon("images/bubbled.png");
 		bomb = new ImageIcon("images/bomb.png");
+		
 		left = false;
 		right = false;
 		up = false;
@@ -48,6 +50,7 @@ public class Bubble extends JLabel implements Moveable {
 		// 플레이어가 있는 위치에 태어나야 한다.
 		x = mContext.getPlayer().getX();
 		y = mContext.getPlayer().getY();
+		
 		setIcon(bubble);
 		setSize(50, 50);
 		setLocation(x, y);
@@ -63,7 +66,7 @@ public class Bubble extends JLabel implements Moveable {
 				} else {
 					right();
 				}
-
+				clearBubble();
 			}
 		}).start();
 	}
@@ -149,7 +152,6 @@ public class Bubble extends JLabel implements Moveable {
 				e.printStackTrace();
 			}
 		}
-		clearBubble();
 	}
 
 	// 메서드 행위(동사) -> (목적어)

@@ -26,6 +26,7 @@ public class BubbleFrame extends JFrame {
 		// player 메모리에 올라간 상태이다.
 		// 약속) run 메서드 안에 동작을 처리한다.
 		new Thread(new BackgroundPlayerService(player)).start();
+		new Thread(new BackgroundEnemyService(enemy)).start();
 	}
 	
 	public Player getPlayer() {
@@ -74,22 +75,25 @@ public class BubbleFrame extends JFrame {
 						player.left();
 					}
 					break;
+					
 				case KeyEvent.VK_RIGHT:
 					if (player.isRight() == false && player.isRightWallCrash() == false) {
 						player.right();
 					}
 					break;
+					
 				case KeyEvent.VK_UP:
 					// 플레이어가 up == false
 					// 플레이어가 down == false
 					if (!player.isUp() && !player.isDown()) {
 						player.up();
 					}
-
 					break;
+					
 				case KeyEvent.VK_DOWN:
 					player.down();
 					break;
+					
 				case KeyEvent.VK_SPACE:
 					// 1단계
 					// player : ATTACK
@@ -110,6 +114,7 @@ public class BubbleFrame extends JFrame {
 					// 오른쪽 버튼을 떼면 player는 멈춰야 해
 					player.setRight(false);
 					break;
+					
 				case KeyEvent.VK_UP:
 
 					break;

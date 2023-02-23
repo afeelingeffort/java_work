@@ -40,6 +40,9 @@ public class BackgroundPlayerService implements Runnable {
 			// -65536, -16556961, -1
 			int bottomColorRight = image.getRGB(player.getX() + 45, player.getY() + 55);
 			// 하얀색이 아니면 바닥이다.
+			
+//			System.out.println(bottomColorLeft);
+			
 			if (bottomColorLeft + bottomColorRight != -2) {
 //				System.out.println("여기는 바닥입니다.");
 				player.setDown(false);
