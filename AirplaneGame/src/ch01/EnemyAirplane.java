@@ -51,28 +51,80 @@ public class EnemyAirplane extends JLabel implements Moveable {
 
 	}
 
-	public void setLeft(boolean left) {
-		this.left = left;
+	public int getAlive() {
+		return alive;
 	}
 
-	public void setRight(boolean right) {
-		this.right = right;
-	}
-
-	public void setLeftWallCrash(boolean leftWallCrash) {
-		this.leftWallCrash = leftWallCrash;
-	}
-
-	public void setRightWallCrash(boolean rightWallCrash) {
-		this.rightWallCrash = rightWallCrash;
+	public void setAlive(int alive) {
+		this.alive = alive;
 	}
 
 	public int getX() {
 		return x;
 	}
 
+	public void setX(int x) {
+		this.x = x;
+	}
+
 	public int getY() {
 		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public EnemyWay getEnemyWay() {
+		return enemyWay;
+	}
+
+	public void setEnemyWay(EnemyWay enemyWay) {
+		this.enemyWay = enemyWay;
+	}
+
+	public boolean isLeft() {
+		return left;
+	}
+
+	public void setLeft(boolean left) {
+		this.left = left;
+	}
+
+	public boolean isRight() {
+		return right;
+	}
+
+	public void setRight(boolean right) {
+		this.right = right;
+	}
+
+	public boolean isLeftWallCrash() {
+		return leftWallCrash;
+	}
+
+	public void setLeftWallCrash(boolean leftWallCrash) {
+		this.leftWallCrash = leftWallCrash;
+	}
+
+	public boolean isRightWallCrash() {
+		return rightWallCrash;
+	}
+
+	public void setRightWallCrash(boolean rightWallCrash) {
+		this.rightWallCrash = rightWallCrash;
+	}
+
+	public ImageIcon getEnemyImage() {
+		return enemyImage;
+	}
+
+	public void setEnemyImage(ImageIcon enemyImage) {
+		this.enemyImage = enemyImage;
+	}
+
+	public int getSPEED() {
+		return SPEED;
 	}
 
 	// 생성자 메서드 1

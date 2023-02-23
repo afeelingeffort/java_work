@@ -29,9 +29,10 @@ public class Item extends JLabel implements Moveable {
 	private boolean downWallCrash;
 
 	// 적군이 살아있는 상태 : 0, 죽었을 때 : 1
-	private int status;
+	private int alive;
 
 	private ImageIcon fastIcon;
+	private ImageIcon recoverIcon;
 
 	public Item(AirplaneFrame aContext) {
 		this.aContext = aContext;
@@ -44,7 +45,8 @@ public class Item extends JLabel implements Moveable {
 	}
 
 	private void initData() {
-		fastIcon = new ImageIcon("images/fastIcon");
+		fastIcon = new ImageIcon("images/fastIcon.png");
+		recoverIcon = new ImageIcon("images/recoverIcon.png");
 	}
 
 	private void getInitLayout() {
@@ -52,6 +54,7 @@ public class Item extends JLabel implements Moveable {
 		itemY = aContext.getEnemy().getY();
 
 		setIcon(fastIcon);
+		setIcon(recoverIcon);
 		setSize(30, 30);
 	}
 
@@ -164,12 +167,12 @@ public class Item extends JLabel implements Moveable {
 		this.downWallCrash = downWallCrash;
 	}
 
-	public int getStatus() {
-		return status;
+	public int getAlive() {
+		return alive;
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void setAlive(int alive) {
+		this.alive = alive;
 	}
 
 	public ImageIcon getFastIcon() {

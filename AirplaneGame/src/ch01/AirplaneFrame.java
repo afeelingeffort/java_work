@@ -1,5 +1,6 @@
 package ch01;
 
+import java.awt.BorderLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -30,6 +31,7 @@ public class AirplaneFrame extends JFrame {
 
 		player = new AirplanePlayer(aContext);
 		enemy = new EnemyAirplane(aContext);
+		
 	}
 
 	private void setInitLayout() {

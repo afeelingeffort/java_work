@@ -22,8 +22,8 @@ public class PlayerBullet extends JLabel implements Moveable {
 	private boolean upWallCrash;
 	private boolean downWallCrash;
 
-	// , 적군이 총알에 맞았을 때 : 1 
-	private int status;
+	// 적군을 맞췄을 때 : 0, 적을 가두고 터질 때
+	private int alive;
 
 	private ImageIcon bullet;
 	private ImageIcon bulletBomb;
@@ -41,12 +41,18 @@ public class PlayerBullet extends JLabel implements Moveable {
 		bullet = new ImageIcon("images/bullet.png");
 		bulletBomb = new ImageIcon("images/bulletBomb.png");
 
+		left = false;
+		right = false;
+		up = false;
+		down = false;
+		alive = 0;
+
 	}
 
 	private void setInitLayout() {
 		bulletX = aContext.getPlayer().getX();
 		bulletY = aContext.getPlayer().getY();
-		
+
 		setIcon(bullet);
 		setSize(140, 100);
 		setLocation(bulletX, bulletY);
@@ -77,16 +83,31 @@ public class PlayerBullet extends JLabel implements Moveable {
 	@Override
 	public void up() {
 		up = true;
+
 		while (true) {
 			bulletY--;
 			setLocation(bulletX, bulletY);
 
+			if(backgroundbulletService.leftWall()) {
+				
+			}
 			try {
 				Thread.sleep(5);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public void crash() {
+		aContext.getEnemy().setAlive(1);
+		alive = 1;
+		setIcon(bulletBomb);
+
+		// heap 메모리에서는 아직 남아있다. (가비지 컬렉터가 알아서 제거해줌)
+		aContext.remove(aContext.getEnemy());
+
+		aContext.repaint();
 	}
 
 	@Override
@@ -175,12 +196,12 @@ public class PlayerBullet extends JLabel implements Moveable {
 		this.downWallCrash = downWallCrash;
 	}
 
-	public int getStatus() {
-		return status;
+	public int getAlive() {
+		return alive;
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void setAlive(int alive) {
+		this.alive = alive;
 	}
 
 	public ImageIcon getBullet() {
